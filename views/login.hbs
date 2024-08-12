@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal Login</title>
+   
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-xl-4">
+                <h2 class="text-center mt-5">Student Portal Login</h2>
+                {{#if invalid}}
+                <div>{{invalid}}</div>
+                {{/if}}
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <form method="post" action="/loginsubmit">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username"
+                                    placeholder="Enter your username">
+                                <div id="div1"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Enter your password">
+                                <div id="div2"></div>
+                            </div>
+                            <button class="btn btn-primary btn-block" onclick="return btnFn()">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function btnFn() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            var flag = 0;
+
+            if (username == "") {
+                document.getElementById("div1").innerHTML = "Enter Username";
+                flag =1;
+            }else{
+                document.getElementById("div1").innerHTML = "";
+            }
+
+            if (password == "") {
+                document.getElementById("div2").innerHTML = "Enter Password";
+                flag = 1;
+            }else{
+                document.getElementById("div2").innerHTML = "";
+            }
+
+            if(flag == 1){
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
